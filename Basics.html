@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>A Practical Guide to Vanilla Web Components: Module 1 - Web Component Fundamentals</title>
+    <script>
+        // Esempio override metodi esistenti
+        class MyCustomElement extends HTMLElement {
+            constructor() {
+                super();
+                console.log("Created");
+            }
+
+            connectedCallback() {
+                console.log("Added to the DOM");
+            }
+
+            // Vanno dichiarati
+            // Ovveride
+            static get observedAttributes() {
+                return ['demo'];
+            }
+            // Ovveride
+            attributeChangedCallback(name, oldValue, newValue) {
+                console.log("Attribute changed ", name, oldValue, newValue);
+            }
+            // Ovveride
+            disconnectedCallback(){
+                console.log("Disconnected from DOM")
+            }
+        }
+        window.customElements.define("my-custom-element", MyCustomElement);
+
+        // Esempio metodo custom
+        class DivisionElement extends HTMLElement {
+            divideByTen(value){
+                console.log(parseInt(value) / 10);
+            }
+        }
+
+        window.customElements.define("do-division", DivisionElement);
+
+        // Esempio Elemento Derivato
+        class MultiplyElement extends DivisionElement {
+            multiplyByTen(value){
+                console.log(parseInt(value) * 10);
+            }
+        }
+
+        window.customElements.define("do-multiply", MultiplyElement);
+
+    </script>
+</head>
+<body>
+    <script>
+        let $ce = document.createElement("my-custom-element");
+        setTimeout( () => {
+            document.body.appendChild($ce);
+        }, 3000);
+    </script>
+    <!-- <my-custom-element></my-custom-element> -->
+
+
+    <!--
+        Per provarlo, dai dev tools di Chrome, andare nella Console e lanciare i comandi: 
+        let $d = document.querySelector("do-division"); 
+        $d.divideByTen(100)
+    -->
+    <do-division></do-division>
+
+    <!--
+        Per provarlo, dai dev tools di Chrome, andare nella Console e lanciare i comandi: 
+        let $d = document.querySelector("do-multiply"); 
+        $d.multiplyByTen(100)
+    -->
+    <do-multiply></do-multiply>
+
+</body>
