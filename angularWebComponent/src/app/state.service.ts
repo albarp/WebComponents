@@ -7,5 +7,7 @@ export class StateService {
 
   person: any;
 
+  fullname: string;
+
   constructor() { }
 }

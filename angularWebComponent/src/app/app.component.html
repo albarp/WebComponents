@@ -2,14 +2,13 @@
 
 <div class='container'>
   <div class="row">
-    <div class="col-4">
-      Angular Compoenet
+    <div class="col-4 border-primary">
+      Angular Component
       <app-list></app-list>
-      {{fullName}}
     </div>
     <div class="col-8">
       Web Component
-      <my-component [person]='person' (click)="onWebComponentClicked($event)"></my-component>
+      <my-component [person]='person' (print)="onWebComponentprint($event)"></my-component>
     </div>
   </div>
 </div>

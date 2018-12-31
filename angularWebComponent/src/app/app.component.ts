@@ -9,8 +9,6 @@ import { StateService } from './state.service';
 export class AppComponent {
   title = 'angularWebComponent';
 
-  fullName: string;
-
   get person() {
     return this.state.person;
   }
@@ -18,10 +16,10 @@ export class AppComponent {
   constructor(private state: StateService) {
   }
 
-  onWebComponentClicked(event: any) {
+  onWebComponentprint(event: any) {
     console.log('clicked in angular');
     if (this.person) {
-      this.fullName = '' +  event.person.Name + event.person.Surname;
+      this.state.fullname = '' +  event.person.Name + event.person.Surname;
     }
   }
 }

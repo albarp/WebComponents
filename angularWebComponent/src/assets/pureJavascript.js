@@ -9,7 +9,7 @@ class MyComponent extends HTMLElement {
         this._$surname = null;
         this._$show = null;
 
-        this.clickEvent = new CustomEvent("click", {
+        this.clickEvent = new CustomEvent("print", {
             bubbles: true,
             cancelable: false,
             person: null
@@ -26,7 +26,8 @@ class MyComponent extends HTMLElement {
             <br/>
             <input type="text" name="name" id="name">
             <input type="text" name="surname" id="surname">
-            <input type="button"  id="show" />
+            <br/>
+            <input type="button" id="show" value="Print" />
         `;
 
         this._$name = this.querySelector("#name");

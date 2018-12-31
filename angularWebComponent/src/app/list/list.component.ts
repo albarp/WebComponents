@@ -19,6 +19,10 @@ export class ListComponent implements OnInit {
     }
   ];
 
+  get fullName(): string {
+    return this.state.fullname;
+  }
+
   constructor(private state: StateService) { }
 
   ngOnInit() {

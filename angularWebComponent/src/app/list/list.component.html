@@ -1,7 +1,9 @@
-<button 
+<button
   *ngFor='let person of people'
   type='button' 
-  class='list-group-item' 
+  class='list-group-item'
   (click)="onClick(person)">
   {{ person.Name }}
 </button>
+<br/>
+{{fullName}}
