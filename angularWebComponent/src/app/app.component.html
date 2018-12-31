@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class='container'>
+  <div class="row">
+    <div class="col-4">
+      Angular Compoenet
+      <app-list></app-list>
+      {{fullName}}
+    </div>
+    <div class="col-8">
+      Web Component
+      <my-component [person]='person' (click)="onWebComponentClicked($event)"></my-component>
+    </div>
+  </div>
+</div>
