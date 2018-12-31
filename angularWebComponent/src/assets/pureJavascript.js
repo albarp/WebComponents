@@ -22,8 +22,12 @@ class MyComponent extends HTMLElement {
                 input {
                     width: 50%;
                 }
+                .wc {
+                    width: 50%;
+                }
             </style>
-            <br/>
+            <p class='wc text-primary'>Web Component</p>
+            <p class='wc text-secondary'>Click on print button to print full name in Angular component</p>
             <input type="text" name="name" id="name">
             <input type="text" name="surname" id="surname">
             <br/>

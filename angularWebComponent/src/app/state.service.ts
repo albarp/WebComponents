@@ -9,5 +9,6 @@ export class StateService {
 
   fullname: string;
 
-  constructor() { }
+  constructor() {
+  }
 }
