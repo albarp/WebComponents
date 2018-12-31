@@ -1,9 +1,9 @@
-<button
-  *ngFor='let person of people'
-  type='button' 
-  class='list-group-item'
-  (click)="onClick(person)">
-  {{ person.Name }}
+<div class="list-group">
+  <button 
+    *ngFor='let person of people' 
+    class="btn btn-light list-group-item"
+    (click)="onClick(person)">
+    {{person.Name}}
 </button>
-<br/>
+</div>
 {{fullName}}

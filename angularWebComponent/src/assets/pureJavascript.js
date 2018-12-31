@@ -19,8 +19,8 @@ class MyComponent extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <style>
-                p {
-                    color: red;
+                input {
+                    width: 50%;
                 }
             </style>
             <br/>
