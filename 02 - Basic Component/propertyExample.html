@@ -6,11 +6,18 @@
     <title>Document</title>
 
     <script src="propertyExample.js"></script>
+
+    <style>
+        li {
+            background-color: black !important;
+        }
+    </style>
+
 </head>
 <body>
 
     <h3>
-        Per provarlo:
+        Per provarlo, developer tools --> console e poi:
     </h3>
     const $poll = document.querySelector("rw-poll"); <br/>
     $poll.data = {"question": "Is this static data?", "answers": ["Yes", "No"]} <br />

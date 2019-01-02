@@ -9,11 +9,15 @@ class RwPoll extends HTMLElement {
         // Elments
         this._$question = null;
         this._$answers = null;
+
+        // Utilizziamo lo shadow DOM evitiamo di prendere gli stili
+        // definiti nell'applicazione principale
+        this._root = this.attachShadow({'mode': 'open'});
     }
 
     connectedCallback() {
         this._attached = true;
-        this.innerHTML = `
+        this._root.innerHTML = `
         <style>
             .rw-poll-container {
                 background-color: #333;
@@ -51,8 +55,8 @@ class RwPoll extends HTMLElement {
         </div>
         `;
 
-        this._$question = this.querySelector("#question");
-        this._$answers = this.querySelector("#answers");
+        this._$question = this._root.querySelector("#question");
+        this._$answers = this._root.querySelector("#answers");
         this._$answers.addEventListener("click", (event) => {
             this._$answers.querySelectorAll("li").forEach(($li, index) => {
                 if($li === event.target) {
