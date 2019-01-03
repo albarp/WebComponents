@@ -4,8 +4,12 @@ class RwStarRating extends HTMLElement {
         // Shadow root
         this._root = this.attachShadow({'mode': 'open'});
         // Elements
-        this._$stop = null;
+        this._$top = null;
         this._$bottom = null;
+
+        this._disabled = false;
+
+        this._value = 0;
     }
     connectedCallback() {
         this._root.innerHTML = `
@@ -76,6 +80,40 @@ class RwStarRating extends HTMLElement {
             </div>
         </div>
         `;
+
+        this._disabled = (this.getAttribute("disabled") !== null);
+
+        this._$top = this._root.querySelector(".top");
+    }
+
+    set value(value) {
+        if(this._value === value) return;
+        this._value = value;
+        this._render();
+    }
+
+    get value() {
+        return this._value;
+    }
+
+    _render() {
+        if(this._$top !== null) {
+            this._$top.style.width = ((this._value * 10) * 2) + "%";
+        }
+    }
+
+    static get observedAttributes() {
+        return ["disabled"];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if(oldValue != newValue){
+            switch(name) {
+                case "disabled":
+                this._disabled = (newValue != null);
+                break;
+            }
+        }
     }
 }
 

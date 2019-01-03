@@ -9,9 +9,15 @@
         html, body {
             font-size: 1.5em
         }
+        p {
+            font-size: 0.5em
+        }
     </style>
 </head>
 <body>
-    <rw-star-rating></rw-star-rating>
+    <p>Per controllarlo programmaticamente: </p>
+    <p>const $sr = document.querySelector("#sr");</p>
+    <p>$sr.value = 2;</p>
+    <rw-star-rating id="sr"></rw-star-rating>
 </body>
 </html>
