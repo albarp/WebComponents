@@ -18,6 +18,8 @@
     <p>Per controllarlo programmaticamente: </p>
     <p>const $sr = document.querySelector("#sr");</p>
     <p>$sr.value = 2;</p>
-    <rw-star-rating id="sr"></rw-star-rating>
+    <p>Oppure per registrarsi agli eventi</p>
+    <p>$sr.addEventListener("changed", () => {console.log("changed!")});</p>
+    <rw-star-rating id="sr" value="3"></rw-star-rating>
 </body>
 </html>
