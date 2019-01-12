@@ -7,6 +7,15 @@ class RwSlideMenu extends HTMLElement {
         // Data
         this._open = false;
     }
+    set open(value) {
+        const result = (value === true);
+        if(this._open === result) return;
+        this._open = result;
+        this._render();
+    }
+    get open() {
+        return this._open;
+    }
     connectedCallback() {
         this._root.innerHTML = `
             <style>
@@ -95,13 +104,13 @@ class RwSlideMenu extends HTMLElement {
                     pointer-events: auto;
                 }
             </style>
-            <div class="frame">
+            <div class="frame" data-close="true">
                 <nav class="container">
                     <div class="title">
                         <div class="title-content">
                             Menu
                         </div>
-                        <a class="close">&#10006;</a>
+                        <a class="close" data-close="true">&#10006;</a>
                     </div>
                     <div class="content>
                         <a href="#">Menu Item One</a>
@@ -109,6 +118,24 @@ class RwSlideMenu extends HTMLElement {
                 </nav>
             </div>
         `;
+        this._$frame = this._root.querySelector(".frame");
+        this._$frame.addEventListener("click", (event) => {
+            if (event.target.dataset.close === "true") {
+                this.open = false;
+            }
+        });
+    }
+    _render() {
+        if (this._$frame !== null) {
+            if(this._open === true) {
+                this._$frame.classList.add("open");
+                this.dispatchEvent(new CustomEvent("menu-opened"));
+            }
+            else{
+                this._$frame.classList.remove("open");
+                this.dispatchEvent(new CustomEvent("menu-closed"));
+            }
+        }
     }
 }
 
