@@ -108,12 +108,12 @@ class RwSlideMenu extends HTMLElement {
                 <nav class="container">
                     <div class="title">
                         <div class="title-content">
-                            Menu
+                            <slot name="title">Menu</slot>
                         </div>
                         <a class="close" data-close="true">&#10006;</a>
                     </div>
-                    <div class="content>
-                        <a href="#">Menu Item One</a>
+                    <div class="content">
+                        <slot class="content-slot"></slot>
                     </div>
                 </nav>
             </div>
